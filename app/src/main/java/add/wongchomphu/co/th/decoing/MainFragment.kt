@@ -6,10 +6,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import butterknife.BindView
 import butterknife.ButterKnife
 
@@ -19,6 +16,9 @@ class MainFragment : Fragment() {
     @BindView(R.id.edt_input_k) lateinit var edtValueK: EditText
     @BindView(R.id.btn_decode) lateinit var btnDecode: Button
     @BindView(R.id.tv_show_encrypt) lateinit var tvShowEncrypt: TextView
+    @BindView(R.id.cb_ShiftCaesar) lateinit var cbSiftCaesar: CheckBox
+    @BindView(R.id.cb_rail_fence_cipher) lateinit var cbRailFenceCipher: CheckBox
+    @BindView(R.id.cb_OTP) lateinit var cbOTP: CheckBox
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_mian, container, false)
@@ -40,6 +40,7 @@ class MainFragment : Fragment() {
             }
         }
     }
+
     private fun encrypt(s: String, key: Int): String {
         val offset = key % 26
         if (offset == 0) return s
