@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import butterknife.BindView
 import butterknife.ButterKnife
 
@@ -17,21 +18,29 @@ class MainFragment : Fragment() {
     @BindView(R.id.edt_encode) lateinit var edtEncode: EditText
     @BindView(R.id.edt_input_k) lateinit var edtValueK: EditText
     @BindView(R.id.btn_decode) lateinit var btnDecode: Button
-    @BindView(R.id.tv_show_encrypt) lateinit var tvShowEncrypt : TextView
+    @BindView(R.id.tv_show_encrypt) lateinit var tvShowEncrypt: TextView
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_mian, container, false)
         ButterKnife.bind(this, view)
 
-        btnDecode.setOnClickListener {
-        val key = edtValueK.text.toString()
-        val encoded = encrypt(edtEncode.text.toString(),key.toInt())
-            tvShowEncrypt.text = encoded
-            tvShowCode.text = decrypt(encoded,key = key.toInt())
-        }
+        ShiftCaesar()
         return view
     }
-    fun encrypt(s: String, key: Int): String {
+
+    private fun ShiftCaesar() {
+        btnDecode.setOnClickListener {
+            if (edtEncode.length() == 0 || edtValueK.length() == 0) {
+                Toast.makeText(context, "ต้องใส่ code หรือ key ให้ครบ", Toast.LENGTH_LONG).show()
+            } else {
+                val key = edtValueK.text.toString()
+                val encoded = encrypt(edtEncode.text.toString(), key.toInt())
+                tvShowEncrypt.text = encoded
+                tvShowCode.text = decrypt(encoded, key = key.toInt())
+            }
+        }
+    }
+    private fun encrypt(s: String, key: Int): String {
         val offset = key % 26
         if (offset == 0) return s
         var d: Char
@@ -40,19 +49,17 @@ class MainFragment : Fragment() {
             if (c in 'A'..'Z') {
                 d = c + offset
                 if (d > 'Z') d -= 26
-            }
-            else if (c in 'a'..'z') {
+            } else if (c in 'a'..'z') {
                 d = c + offset
                 if (d > 'z') d -= 26
-            }
-            else
+            } else
                 d = c
             chars[index] = d
         }
         return chars.joinToString("")
     }
 
-    fun decrypt(s: String, key: Int): String = encrypt(s, 26 - key)
+    private fun decrypt(s: String, key: Int): String = encrypt(s, 26 - key)
 
     companion object {
         fun newInstance(): MainFragment {
