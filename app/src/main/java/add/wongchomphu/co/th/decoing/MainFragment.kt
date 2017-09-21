@@ -12,7 +12,7 @@ import butterknife.ButterKnife
 import android.widget.CheckBox
 
 
-class MainFragment : Fragment(),View.OnClickListener{
+class MainFragment : Fragment() {
 
     @BindView(R.id.tv_show_decoding) lateinit var tvShowCode: TextView
     @BindView(R.id.edt_encode) lateinit var edtEncode: EditText
@@ -26,11 +26,29 @@ class MainFragment : Fragment(),View.OnClickListener{
                               savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_mian, container, false)
         ButterKnife.bind(this, view)
-
+        selectCheckbox()
         return view
     }
 
-    override fun onClick(view: View) {
+    private fun selectCheckbox() {
+        cbSiftCaesar.setOnCheckedChangeListener { compoundButton, b ->
+            if (compoundButton.isChecked) {
+                cbRailFenceCipher.isChecked = false
+                cbOTP.isChecked = false
+            }
+        }
+        cbRailFenceCipher.setOnCheckedChangeListener { compoundButton, b ->
+            if (compoundButton.isChecked) {
+                cbSiftCaesar.isChecked = false
+                cbOTP.isChecked = false
+            }
+        }
+        cbOTP.setOnCheckedChangeListener { compoundButton, b ->
+            if (compoundButton.isChecked) {
+                cbSiftCaesar.isChecked = false
+                cbRailFenceCipher.isChecked = false
+            }
+        }
     }
 
     private fun ShiftCaesar() {
