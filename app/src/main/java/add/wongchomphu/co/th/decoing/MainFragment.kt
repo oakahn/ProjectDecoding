@@ -9,8 +9,11 @@ import android.view.ViewGroup
 import android.widget.*
 import butterknife.BindView
 import butterknife.ButterKnife
+import android.widget.CheckBox
 
-class MainFragment : Fragment() {
+
+class MainFragment : Fragment(),View.OnClickListener{
+
     @BindView(R.id.tv_show_decoding) lateinit var tvShowCode: TextView
     @BindView(R.id.edt_encode) lateinit var edtEncode: EditText
     @BindView(R.id.edt_input_k) lateinit var edtValueK: EditText
@@ -24,8 +27,10 @@ class MainFragment : Fragment() {
         val view = inflater!!.inflate(R.layout.fragment_mian, container, false)
         ButterKnife.bind(this, view)
 
-        ShiftCaesar()
         return view
+    }
+
+    override fun onClick(view: View) {
     }
 
     private fun ShiftCaesar() {
