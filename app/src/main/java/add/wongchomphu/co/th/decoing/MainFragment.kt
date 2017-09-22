@@ -27,7 +27,7 @@ class MainFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_mian, container, false)
         ButterKnife.bind(this, view)
-        selectCheckbox()
+        ShiftCaesar()
         return view
     }
 
@@ -54,11 +54,19 @@ class MainFragment : Fragment() {
 
     private fun ShiftCaesar() {
         btnEncode.setOnClickListener {
+            if (edtEncode.length() == 0 || edtValueK.length() == 0) {
+                Toast.makeText(context, "ต้องใส่ input หรือ key ให้ครบ", Toast.LENGTH_LONG).show()
+            } else {
+                val key = edtValueK.text.toString()
+                val encoded = encryptElse(edtEncode.text.toString(), key.toInt())
+                tvShowEncrypt.text = encoded
+                tvShowOutput.text = decrypt(encoded, key = key.toInt())
 
+            }
         }
         btnDecode.setOnClickListener {
             if (edtEncode.length() == 0 || edtValueK.length() == 0) {
-                Toast.makeText(context, "ต้องใส่ code หรือ key ให้ครบ", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "ต้องใส่ input หรือ key ให้ครบ", Toast.LENGTH_LONG).show()
             } else {
                 val key = edtValueK.text.toString()
                 val encoded = encrypt(edtEncode.text.toString(), key.toInt())
@@ -86,8 +94,27 @@ class MainFragment : Fragment() {
         }
         return chars.joinToString("")
     }
+    private fun encryptElse(s: String, key: Int): String {
+        val offset = (key % 26) - key
+        if (offset == 0) return s
+        var d: Char
+        val chars = CharArray(s.length)
+        for ((index, c) in s.withIndex()) {
+            if (c in 'A'..'Z') {
+                d = c + offset
+                if (d > 'Z') d += 26
+            } else if (c in 'a'..'z') {
+                d = c + offset
+                if (d > 'z') d += 26
+            } else
+                d = c
+            chars[index] = d
+        }
+        return chars.joinToString("")
+    }
 
     private fun decrypt(s: String, key: Int): String = encrypt(s, 26 - key)
+
 
     companion object {
         fun newInstance(): MainFragment {
