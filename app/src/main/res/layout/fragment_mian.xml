@@ -75,12 +75,20 @@
             android:padding="14dp"
             android:inputType="number"/>
         <Button
-            android:id="@+id/btn_decode"
+            android:id="@+id/btn_encrypt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="14dp"
             android:layout_marginRight="14dp"
-            android:text="decode" />
+            android:text="Encrypt"
+            />
+        <Button
+            android:id="@+id/btn_decrypt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            android:text="Decrypt" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

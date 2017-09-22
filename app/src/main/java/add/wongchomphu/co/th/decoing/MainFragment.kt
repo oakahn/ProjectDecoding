@@ -17,7 +17,8 @@ class MainFragment : Fragment() {
     @BindView(R.id.tv_show_decoding) lateinit var tvShowCode: TextView
     @BindView(R.id.edt_encode) lateinit var edtEncode: EditText
     @BindView(R.id.edt_input_k) lateinit var edtValueK: EditText
-    @BindView(R.id.btn_decode) lateinit var btnDecode: Button
+    @BindView(R.id.btn_encrypt) lateinit var btnEncode: Button
+    @BindView(R.id.btn_decrypt) lateinit var btnDecode: Button
     @BindView(R.id.tv_show_encrypt) lateinit var tvShowEncrypt: TextView
     @BindView(R.id.cb_ShiftCaesar) lateinit var cbSiftCaesar: CheckBox
     @BindView(R.id.cb_rail_fence_cipher) lateinit var cbRailFenceCipher: CheckBox
@@ -52,6 +53,9 @@ class MainFragment : Fragment() {
     }
 
     private fun ShiftCaesar() {
+        btnEncode.setOnClickListener {
+
+        }
         btnDecode.setOnClickListener {
             if (edtEncode.length() == 0 || edtValueK.length() == 0) {
                 Toast.makeText(context, "ต้องใส่ code หรือ key ให้ครบ", Toast.LENGTH_LONG).show()
