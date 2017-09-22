@@ -14,12 +14,12 @@ import android.widget.CheckBox
 
 class MainFragment : Fragment() {
 
-    @BindView(R.id.tv_show_decoding) lateinit var tvShowCode: TextView
+    @BindView(R.id.tv_show_input) lateinit var tvShowEncrypt: TextView
+    @BindView(R.id.tv_show_output) lateinit var tvShowOutput: TextView
     @BindView(R.id.edt_encode) lateinit var edtEncode: EditText
     @BindView(R.id.edt_input_k) lateinit var edtValueK: EditText
     @BindView(R.id.btn_encrypt) lateinit var btnEncode: Button
     @BindView(R.id.btn_decrypt) lateinit var btnDecode: Button
-    @BindView(R.id.tv_show_encrypt) lateinit var tvShowEncrypt: TextView
     @BindView(R.id.cb_ShiftCaesar) lateinit var cbSiftCaesar: CheckBox
     @BindView(R.id.cb_rail_fence_cipher) lateinit var cbRailFenceCipher: CheckBox
     @BindView(R.id.cb_OTP) lateinit var cbOTP: CheckBox
@@ -62,8 +62,8 @@ class MainFragment : Fragment() {
             } else {
                 val key = edtValueK.text.toString()
                 val encoded = encrypt(edtEncode.text.toString(), key.toInt())
-                tvShowEncrypt.text = encoded
-                tvShowCode.text = decrypt(encoded, key = key.toInt())
+                tvShowEncrypt.text = decrypt(encoded, key = key.toInt())
+                tvShowOutput.text = encoded
             }
         }
     }
