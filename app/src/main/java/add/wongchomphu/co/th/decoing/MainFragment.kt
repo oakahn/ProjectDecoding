@@ -27,7 +27,7 @@ class MainFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_mian, container, false)
         ButterKnife.bind(this, view)
-        ShiftCaesar()
+        selectCheckbox()
         return view
     }
 
@@ -36,6 +36,7 @@ class MainFragment : Fragment() {
             if (compoundButton.isChecked) {
                 cbRailFenceCipher.isChecked = false
                 cbOTP.isChecked = false
+                ShiftCaesar()
             }
         }
         cbRailFenceCipher.setOnCheckedChangeListener { compoundButton, b ->
