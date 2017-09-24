@@ -56,7 +56,7 @@ class MainFragment : Fragment() {
     private fun ShiftCaesar() {
         btnEncode.setOnClickListener {
             if (edtEncode.length() == 0 || edtValueK.length() == 0) {
-                Toast.makeText(context, "ต้องใส่ input หรือ key ให้ครบ", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "${R.string.message_error}", Toast.LENGTH_LONG).show()
             } else {
                 val key = edtValueK.text.toString()
                 val encoded = encryptElse(edtEncode.text.toString(), key.toInt())
@@ -67,7 +67,7 @@ class MainFragment : Fragment() {
         }
         btnDecode.setOnClickListener {
             if (edtEncode.length() == 0 || edtValueK.length() == 0) {
-                Toast.makeText(context, "ต้องใส่ input หรือ key ให้ครบ", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "${R.string.message_error}", Toast.LENGTH_LONG).show()
             } else {
                 val key = edtValueK.text.toString()
                 val encoded = encrypt(edtEncode.text.toString(), key.toInt())
@@ -76,7 +76,6 @@ class MainFragment : Fragment() {
             }
         }
     }
-
     private fun encrypt(s: String, key: Int): String {
         val offset = key % 26
         if (offset == 0) return s
