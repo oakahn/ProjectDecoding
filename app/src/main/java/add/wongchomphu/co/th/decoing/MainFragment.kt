@@ -61,7 +61,7 @@ class MainFragment : Fragment() {
                 val key = edtValueK.text.toString()
                 val encoded = encryptElse(edtEncode.text.toString(), key.toInt())
                 tvShowEncrypt.text = encoded
-                tvShowOutput.text = decrypt(encoded, key = key.toInt())
+                tvShowOutput.text = decrypt(encoded, key.toInt())
 
             }
         }
@@ -71,7 +71,7 @@ class MainFragment : Fragment() {
             } else {
                 val key = edtValueK.text.toString()
                 val encoded = encrypt(edtEncode.text.toString(), key.toInt())
-                tvShowEncrypt.text = decrypt(encoded, key = key.toInt())
+                tvShowEncrypt.text = decrypt(encoded, key.toInt())
                 tvShowOutput.text = encoded
             }
         }
