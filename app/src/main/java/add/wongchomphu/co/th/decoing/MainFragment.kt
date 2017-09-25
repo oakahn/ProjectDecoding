@@ -3,6 +3,7 @@ package add.wongchomphu.co.th.decoing
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -56,7 +57,7 @@ class MainFragment : Fragment() {
     private fun ShiftCaesar() {
         btnEncode.setOnClickListener {
             if (edtEncode.length() == 0 || edtValueK.length() == 0) {
-                Toast.makeText(context, "${R.string.message_error}", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, getString(R.string.Error_Message), Toast.LENGTH_LONG).show()
             } else {
                 val key = edtValueK.text.toString()
                 val encoded = encryptElse(edtEncode.text.toString(), key.toInt())
@@ -67,7 +68,7 @@ class MainFragment : Fragment() {
         }
         btnDecode.setOnClickListener {
             if (edtEncode.length() == 0 || edtValueK.length() == 0) {
-                Toast.makeText(context, "${R.string.message_error}", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, getString(R.string.Error_Message), Toast.LENGTH_LONG).show()
             } else {
                 val key = edtValueK.text.toString()
                 val encoded = encrypt(edtEncode.text.toString(), key.toInt())
