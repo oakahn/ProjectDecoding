@@ -33,24 +33,18 @@ class MainFragment : Fragment() {
     }
 
     private fun selectCheckbox() {
-        cbSiftCaesar.setOnCheckedChangeListener { compoundButton, b ->
-            if (compoundButton.isChecked) {
-                cbRailFenceCipher.isChecked = false
-                cbOTP.isChecked = false
-                ShiftCaesar()
-            }
+        cbSiftCaesar.setOnClickListener {
+            cbRailFenceCipher.isChecked = false
+            cbOTP.isChecked = false
+            ShiftCaesar()
         }
-        cbRailFenceCipher.setOnCheckedChangeListener { compoundButton, b ->
-            if (compoundButton.isChecked) {
-                cbSiftCaesar.isChecked = false
-                cbOTP.isChecked = false
-            }
+        cbRailFenceCipher.setOnClickListener {
+            cbSiftCaesar.isChecked = false
+            cbOTP.isChecked = false
         }
-        cbOTP.setOnCheckedChangeListener { compoundButton, b ->
-            if (compoundButton.isChecked) {
-                cbSiftCaesar.isChecked = false
-                cbRailFenceCipher.isChecked = false
-            }
+        cbOTP.setOnClickListener {
+            cbSiftCaesar.isChecked = false
+            cbRailFenceCipher.isChecked = false
         }
     }
 
