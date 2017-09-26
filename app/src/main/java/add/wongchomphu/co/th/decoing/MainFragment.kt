@@ -71,12 +71,12 @@ class MainFragment : Fragment() {
             }
         }
     }
-    private fun encrypt(s: String, key: Int): String {
+    private fun encrypt(input: String, key: Int): String {
         val offset = key % 26
-        if (offset == 0) return s
+        if (offset == 0) return input
         var d: Char
-        val chars = CharArray(s.length)
-        for ((index, c) in s.withIndex()) {
+        val chars = CharArray(input.length)
+        for ((index, c) in input.withIndex()) {
             if (c in 'A'..'Z') {
                 d = c + offset
                 if (d > 'Z') d -= 26
@@ -89,12 +89,12 @@ class MainFragment : Fragment() {
         }
         return chars.joinToString("")
     }
-    private fun encryptElse(s: String, key: Int): String {
+    private fun encryptElse(input: String, key: Int): String {
         val offset = (key % 26) - key
-        if (offset == 0) return s
+        if (offset == 0) return input
         var d: Char
-        val chars = CharArray(s.length)
-        for ((index, c) in s.withIndex()) {
+        val chars = CharArray(input.length)
+        for ((index, c) in input.withIndex()) {
             if (c in 'A'..'Z') {
                 d = c + offset
                 if (d > 'Z') d += 26
@@ -108,7 +108,7 @@ class MainFragment : Fragment() {
         return chars.joinToString("")
     }
 
-    private fun decrypt(s: String, key: Int): String = encrypt(s, 26 - key)
+    private fun decrypt(input: String, key: Int): String = encrypt(input, 26 - key)
 
 
     companion object {
