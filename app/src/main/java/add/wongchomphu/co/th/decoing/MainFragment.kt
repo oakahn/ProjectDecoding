@@ -74,36 +74,36 @@ class MainFragment : Fragment() {
     private fun encrypt(input: String, key: Int): String {
         val offset = key % 26
         if (offset == 0) return input
-        var d: Char
+        var output: Char
         val chars = CharArray(input.length)
-        for ((index, c) in input.withIndex()) {
-            if (c in 'A'..'Z') {
-                d = c + offset
-                if (d > 'Z') d -= 26
-            } else if (c in 'a'..'z') {
-                d = c + offset
-                if (d > 'z') d -= 26
+        for ((index, position) in input.withIndex()) {
+            if (position in 'A'..'Z') {
+                output = position + offset
+                if (output > 'Z') output -= 26
+            } else if (position in 'a'..'z') {
+                output = position + offset
+                if (output > 'z') output -= 26
             } else
-                d = c
-            chars[index] = d
+                output = position
+            chars[index] = output
         }
         return chars.joinToString("")
     }
     private fun encryptElse(input: String, key: Int): String {
         val offset = (key % 26) - key
         if (offset == 0) return input
-        var d: Char
+        var output: Char
         val chars = CharArray(input.length)
-        for ((index, c) in input.withIndex()) {
-            if (c in 'A'..'Z') {
-                d = c + offset
-                if (d > 'Z') d += 26
-            } else if (c in 'a'..'z') {
-                d = c + offset
-                if (d > 'z') d += 26
+        for ((index, position) in input.withIndex()) {
+            if (position in 'A'..'Z') {
+                output = position + offset
+                if (output > 'Z') output += 26
+            } else if (position in 'a'..'z') {
+                output = position + offset
+                if (output > 'z') output += 26
             } else
-                d = c
-            chars[index] = d
+                output = position
+            chars[index] = output
         }
         return chars.joinToString("")
     }
