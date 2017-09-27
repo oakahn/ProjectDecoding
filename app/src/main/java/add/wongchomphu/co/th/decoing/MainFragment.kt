@@ -41,6 +41,7 @@ class MainFragment : Fragment() {
         cbRailFenceCipher.setOnClickListener {
             cbSiftCaesar.isChecked = false
             cbOTP.isChecked = false
+            railfencecipher()
         }
         cbOTP.setOnClickListener {
             cbSiftCaesar.isChecked = false
@@ -107,10 +108,10 @@ class MainFragment : Fragment() {
         }
         return chars.joinToString("")
     }
-
     private fun decrypt(input: String, key: Int): String = encrypt(input, 26 - key)
+    private fun railfencecipher() {
 
-
+    }
     companion object {
         fun newInstance(): MainFragment {
             val bundle = Bundle()
