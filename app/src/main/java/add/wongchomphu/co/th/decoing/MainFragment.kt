@@ -46,6 +46,7 @@ class MainFragment : Fragment() {
         cbOTP.setOnClickListener {
             cbSiftCaesar.isChecked = false
             cbRailFenceCipher.isChecked = false
+            otp()
         }
     }
 
@@ -110,6 +111,8 @@ class MainFragment : Fragment() {
     }
     private fun decrypt(input: String, key: Int): String = encrypt(input, 26 - key)
     private fun railfencecipher() {
+    }
+    private fun otp() {
 
     }
     companion object {
