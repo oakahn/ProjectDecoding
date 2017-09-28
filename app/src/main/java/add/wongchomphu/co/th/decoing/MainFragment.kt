@@ -74,17 +74,18 @@ class MainFragment : Fragment() {
         }
     }
     private fun encrypt(input: String, key: Int): String {
-        val offset = key % 26
+        val indexOfChar = 26
+        val offset = key % indexOfChar
         if (offset == 0) return input
         var output: Char
         val chars = CharArray(input.length)
         for ((index, position) in input.withIndex()) {
             if (position in 'A'..'Z') {
                 output = position + offset
-                if (output > 'Z') output -= 26
+                if (output > 'Z') output -= indexOfChar
             } else if (position in 'a'..'z') {
                 output = position + offset
-                if (output > 'z') output -= 26
+                if (output > 'z') output -= indexOfChar
             } else
                 output = position
             chars[index] = output
@@ -111,6 +112,7 @@ class MainFragment : Fragment() {
     }
     private fun decrypt(input: String, key: Int): String = encrypt(input, 26 - key)
     private fun railfencecipher() {
+
     }
     private fun otp() {
 
