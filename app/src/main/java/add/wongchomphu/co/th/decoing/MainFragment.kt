@@ -41,12 +41,10 @@ class MainFragment : Fragment() {
         cbRailFenceCipher.setOnClickListener {
             cbSiftCaesar.isChecked = false
             cbOTP.isChecked = false
-            railfencecipher()
         }
         cbOTP.setOnClickListener {
             cbSiftCaesar.isChecked = false
             cbRailFenceCipher.isChecked = false
-            otp()
         }
     }
 
@@ -112,8 +110,38 @@ class MainFragment : Fragment() {
         return chars.joinToString("")
     }
     private fun decrypt(input: String, key: Int): String = encrypt(input, 26 - key)
-    private fun railfencecipher() {
-
+    private fun railFenceCipherEncrypt(text: String, rows: Int): String {
+            if (rows < 2 || rows >= text.length) return text
+            val sb = StringBuilder()
+            var step1: Int
+            var step2: Int
+            for (row in 0 until rows) {
+                if (row == 0 || row == rows - 1) {
+                    step2 = (rows - 1) * 2
+                    step1 = step2
+                } else {
+                    step1 = (rows - 1) * 2 - row * 2
+                    step2 = row * 2
+                }
+                var x = 0
+                var y = row
+                while (y < text.length) {
+                    if (x == 0) {
+                        sb.append(text[row])
+                        y += step1
+                    } else {
+                        if (x % 2 != 0) {
+                            sb.append(text[y])
+                            y += step2
+                        } else {
+                            sb.append(text[y])
+                            y += step1
+                        }
+                    }
+                    x++
+                }
+            }
+            return sb.toString()
     }
     private fun otp() {
 
