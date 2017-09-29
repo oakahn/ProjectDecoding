@@ -80,8 +80,8 @@ class MainFragment : Fragment() {
             } else {
                 val key = edtValueK.text.toString()
                 val encoded = railFenceCipherEncrypt(edtEncode.text.toString(), key.toInt())
-                tvShowEncrypt.text = encoded
-                tvShowOutput.text = railFenceCipherDecrypt(encoded, key.toInt())
+                tvShowEncrypt.text = edtEncode.text.toString()
+                tvShowOutput.text = encoded
 
             }
         }
@@ -90,8 +90,8 @@ class MainFragment : Fragment() {
                 Toast.makeText(context, getString(R.string.Error_Message), Toast.LENGTH_LONG).show()
             } else {
                 val key = edtValueK.text.toString()
-                val encoded = railFenceCipherEncrypt(edtEncode.text.toString(), key.toInt())
-                tvShowEncrypt.text = railFenceCipherDecrypt(encoded, key.toInt())
+                val encoded = railFenceCipherDecrypt(edtEncode.text.toString(), key.toInt())
+                tvShowEncrypt.text = edtEncode.text.toString()
                 tvShowOutput.text = encoded
             }
         }
