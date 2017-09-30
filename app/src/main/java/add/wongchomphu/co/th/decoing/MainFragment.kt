@@ -3,7 +3,6 @@ package add.wongchomphu.co.th.decoing
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -55,9 +54,9 @@ class MainFragment : Fragment() {
                 Toast.makeText(context, getString(R.string.Error_Message), Toast.LENGTH_LONG).show()
             } else {
                 val key = edtValueK.text.toString()
-                val encoded = encryptElse(edtEncode.text.toString(), key.toInt())
+                val encoded = ShiftCaesarEncryptElse(edtEncode.text.toString(), key.toInt())
                 tvShowEncrypt.text = edtEncode.text.toString()
-                tvShowOutput.text = decrypt(encoded, key.toInt())
+                tvShowOutput.text = ShiftCaesarDecrypt(encoded, key.toInt())
 
             }
         }
@@ -66,7 +65,7 @@ class MainFragment : Fragment() {
                 Toast.makeText(context, getString(R.string.Error_Message), Toast.LENGTH_LONG).show()
             } else {
                 val key = edtValueK.text.toString()
-                val encoded = encrypt(edtEncode.text.toString(), key.toInt())
+                val encoded = ShiftCaesarEncrypt(edtEncode.text.toString(), key.toInt())
                 tvShowEncrypt.text = edtEncode.text.toString()
                 tvShowOutput.text = encoded
             }
@@ -97,7 +96,7 @@ class MainFragment : Fragment() {
         }
     }
 
-    private fun encrypt(input: String, key: Int): String {
+    private fun ShiftCaesarEncrypt(input: String, key: Int): String {
         val indexOfChar = 26
         val offset = key % indexOfChar
         if (offset == 0) return input
@@ -117,7 +116,7 @@ class MainFragment : Fragment() {
         return chars.joinToString("")
     }
 
-    private fun encryptElse(input: String, key: Int): String {
+    private fun ShiftCaesarEncryptElse(input: String, key: Int): String {
         val indexOfChar = 26
         val offset = (key % indexOfChar) - key
         if (offset == 0) return input
@@ -137,7 +136,7 @@ class MainFragment : Fragment() {
         return chars.joinToString("")
     }
 
-    private fun decrypt(input: String, key: Int): String = encrypt(input, 26 - key)
+    private fun ShiftCaesarDecrypt(input: String, key: Int): String = ShiftCaesarEncrypt(input, 26 - key)
     private fun railFenceCipherEncrypt(text: String, key: Int): String {
         if (key < 2 || key >= text.length) return text
         val sb = StringBuilder()
