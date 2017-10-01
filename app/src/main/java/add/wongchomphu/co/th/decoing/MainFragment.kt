@@ -46,6 +46,7 @@ class MainFragment : Fragment() {
         cbOTP.setOnClickListener {
             cbSiftCaesar.isChecked = false
             cbRailFenceCipher.isChecked = false
+            otp()
         }
     }
 
