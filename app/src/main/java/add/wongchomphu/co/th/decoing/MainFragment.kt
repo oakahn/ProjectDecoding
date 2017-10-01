@@ -23,6 +23,7 @@ class MainFragment : Fragment() {
     @BindView(R.id.cb_ShiftCaesar) lateinit var cbSiftCaesar: CheckBox
     @BindView(R.id.cb_rail_fence_cipher) lateinit var cbRailFenceCipher: CheckBox
     @BindView(R.id.cb_OTP) lateinit var cbOTP: CheckBox
+    val indexOfChar = 26
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_mian, container, false)
@@ -97,7 +98,6 @@ class MainFragment : Fragment() {
     }
 
     private fun ShiftCaesarEncrypt(input: String, key: Int): String {
-        val indexOfChar = 26
         val offset = key % indexOfChar
         if (offset == 0) return input
         var output: Char
@@ -117,7 +117,6 @@ class MainFragment : Fragment() {
     }
 
     private fun ShiftCaesarEncryptElse(input: String, key: Int): String {
-        val indexOfChar = 26
         val offset = (key % indexOfChar) - key
         if (offset == 0) return input
         var output: Char
@@ -136,7 +135,7 @@ class MainFragment : Fragment() {
         return chars.joinToString("")
     }
 
-    private fun ShiftCaesarDecrypt(input: String, key: Int): String = ShiftCaesarEncrypt(input, 26 - key)
+    private fun ShiftCaesarDecrypt(input: String, key: Int): String = ShiftCaesarEncrypt(input, indexOfChar - key)
     private fun railFenceCipherEncrypt(text: String, key: Int): String {
         if (key < 2 || key >= text.length) return text
         val sb = StringBuilder()
@@ -170,7 +169,6 @@ class MainFragment : Fragment() {
         }
         return sb.toString()
     }
-
     private fun railFenceCipherDecrypt(text: String, key: Int): String {
 
         val boundaries: Int
