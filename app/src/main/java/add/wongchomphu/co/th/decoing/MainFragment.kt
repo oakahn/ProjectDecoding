@@ -23,7 +23,7 @@ class MainFragment : Fragment() {
     @BindView(R.id.cb_ShiftCaesar) lateinit var cbSiftCaesar: CheckBox
     @BindView(R.id.cb_rail_fence_cipher) lateinit var cbRailFenceCipher: CheckBox
     @BindView(R.id.cb_OTP) lateinit var cbOTP: CheckBox
-    val indexOfChar = 26
+
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_mian, container, false)
@@ -31,7 +31,10 @@ class MainFragment : Fragment() {
         selectCheckbox()
         return view
     }
-
+    private val indexOfChar = 26
+    private fun Freevalue() {
+        Toast.makeText(context, getString(R.string.Error_Message), Toast.LENGTH_LONG).show()
+    }
     private fun selectCheckbox() {
         cbSiftCaesar.setOnClickListener {
             cbRailFenceCipher.isChecked = false
@@ -53,7 +56,7 @@ class MainFragment : Fragment() {
     private fun ShiftCaesar() {
         btnEncode.setOnClickListener {
             if (edtEncode.length() == 0 || edtValueK.length() == 0) {
-                Toast.makeText(context, getString(R.string.Error_Message), Toast.LENGTH_LONG).show()
+                Freevalue()
             } else {
                 val key = edtValueK.text.toString()
                 val encoded = ShiftCaesarEncryptElse(edtEncode.text.toString(), key.toInt())
@@ -64,7 +67,7 @@ class MainFragment : Fragment() {
         }
         btnDecode.setOnClickListener {
             if (edtEncode.length() == 0 || edtValueK.length() == 0) {
-                Toast.makeText(context, getString(R.string.Error_Message), Toast.LENGTH_LONG).show()
+               Freevalue()
             } else {
                 val key = edtValueK.text.toString()
                 val encoded = ShiftCaesarEncrypt(edtEncode.text.toString(), key.toInt())
@@ -77,7 +80,7 @@ class MainFragment : Fragment() {
     private fun RailFenceCipher() {
         btnEncode.setOnClickListener {
             if (edtEncode.length() == 0 || edtValueK.length() == 0) {
-                Toast.makeText(context, getString(R.string.Error_Message), Toast.LENGTH_LONG).show()
+                Freevalue()
             } else {
                 val key = edtValueK.text.toString()
                 val encoded = railFenceCipherEncrypt(edtEncode.text.toString(), key.toInt())
@@ -88,7 +91,7 @@ class MainFragment : Fragment() {
         }
         btnDecode.setOnClickListener {
             if (edtEncode.length() == 0 || edtValueK.length() == 0) {
-                Toast.makeText(context, getString(R.string.Error_Message), Toast.LENGTH_LONG).show()
+                Freevalue()
             } else {
                 val key = edtValueK.text.toString()
                 val encoded = railFenceCipherDecrypt(edtEncode.text.toString(), key.toInt())
@@ -97,6 +100,7 @@ class MainFragment : Fragment() {
             }
         }
     }
+
 
     private fun ShiftCaesarEncrypt(input: String, key: Int): String {
         val offset = key % indexOfChar
