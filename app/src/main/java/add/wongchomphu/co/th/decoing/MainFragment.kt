@@ -178,7 +178,7 @@ class MainFragment : Fragment() {
 
         val boundaries: Int
 
-        val innerkey = key - 2
+        val ikey = key - 2
 
         val rowLengths = IntArray(key)
 
@@ -192,7 +192,7 @@ class MainFragment : Fragment() {
         for (i in rowLengths.indices) {
             rowLengths[i] = minRowLen
         }
-        val remainder = text.length - (boundaries + innerkey * minRowLen)
+        val remainder = text.length - (boundaries + ikey * minRowLen)
 
         if (boundaries % 2 == 0) {
             rowLengths[0] = boundaries / 2
