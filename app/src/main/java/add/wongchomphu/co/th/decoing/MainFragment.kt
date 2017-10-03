@@ -157,11 +157,11 @@ class MainFragment : Fragment() {
             var x = 0
             var y = row
             while (y < text.length) {
-                if (x == 0) {
+                y += if (x == 0) {
                     sb.append(text[row])
-                    y += step1
+                    step1
                 } else {
-                    y += if (x % 2 != 0) {
+                    if (x % 2 != 0) {
                         sb.append(text[y])
                         step2
                     } else {
