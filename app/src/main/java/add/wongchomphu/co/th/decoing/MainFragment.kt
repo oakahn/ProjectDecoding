@@ -161,12 +161,12 @@ class MainFragment : Fragment() {
                     sb.append(text[row])
                     y += step1
                 } else {
-                    if (x % 2 != 0) {
+                    y += if (x % 2 != 0) {
                         sb.append(text[y])
-                        y += step2
+                        step2
                     } else {
                         sb.append(text[y])
-                        y += step1
+                        step1
                     }
                 }
                 x++
