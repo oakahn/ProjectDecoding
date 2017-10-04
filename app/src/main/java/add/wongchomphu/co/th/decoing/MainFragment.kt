@@ -10,6 +10,12 @@ import android.widget.*
 import butterknife.BindView
 import butterknife.ButterKnife
 import android.widget.CheckBox
+import javax.crypto.Cipher
+import javax.crypto.spec.IvParameterSpec
+import javax.crypto.spec.SecretKeySpec
+import android.R.attr.key
+
+
 
 
 class MainFragment : Fragment() {
@@ -31,10 +37,12 @@ class MainFragment : Fragment() {
         selectCheckbox()
         return view
     }
+
     private val indexOfChar = 26
     private fun Freevalue() {
         Toast.makeText(context, getString(R.string.Error_Message), Toast.LENGTH_LONG).show()
     }
+
     private fun selectCheckbox() {
         cbSiftCaesar.setOnClickListener {
             cbRailFenceCipher.isChecked = false
@@ -49,7 +57,7 @@ class MainFragment : Fragment() {
         cbOTP.setOnClickListener {
             cbSiftCaesar.isChecked = false
             cbRailFenceCipher.isChecked = false
-            otp()
+
         }
     }
 
@@ -67,7 +75,7 @@ class MainFragment : Fragment() {
         }
         btnDecode.setOnClickListener {
             if (edtEncode.length() == 0 || edtValueK.length() == 0) {
-               Freevalue()
+                Freevalue()
             } else {
                 val key = edtValueK.text.toString()
                 val encoded = ShiftCaesarEncrypt(edtEncode.text.toString(), key.toInt())
@@ -86,7 +94,6 @@ class MainFragment : Fragment() {
                 val encoded = railFenceCipherEncrypt(edtEncode.text.toString(), key.toInt())
                 tvShowEncrypt.text = edtEncode.text.toString()
                 tvShowOutput.text = encoded
-
             }
         }
         btnDecode.setOnClickListener {
@@ -174,6 +181,7 @@ class MainFragment : Fragment() {
         }
         return sb.toString()
     }
+
     private fun railFenceCipherDecrypt(text: String, key: Int): String {
 
         val boundaries: Int
@@ -263,9 +271,97 @@ class MainFragment : Fragment() {
         return sb.toString()
     }
 
-    private fun otp() {
+        class otpp {
+            var a = 97
+            var all = CharArray(27)
+            init {
+                for (i in 0..25) {
+                    all[i] = a.toChar()
+                    a++
+                }
+            }
+            fun Ipos(c: Char): Int {
+                var i = 0
+                while (i < 26) {
+                    if (all[i] == c) {
+                        break
+                    }
+                    i++
+                }
+                return i
+            }
+            fun Cpos(c: Int): Char {
+                var i = 0
+                while (i < c) {
+                    i++
 
-    }
+                }
+                return all[i]
+            }
+        }
+
+        class Onetimepadencryptcipher {
+            fun Encryption(plaintext: String, key: String): String {
+                var plaintext = plaintext
+                plaintext = plaintext.toLowerCase()
+                val m1 = otpp()
+                val pt = IntArray(plaintext.length)
+                val k = IntArray(key.length)
+                val ct = IntArray(plaintext.length)
+
+                for (i in 0 until plaintext.length) {
+                    pt[i] = m1.Ipos(plaintext[i])
+                }
+                for (i in 0 until key.length) {
+                    k[i] = m1.Ipos(key[i])
+                }
+                var j = 0
+                for (i in 0 until plaintext.length) {
+                    ct[i] = pt[i] + k[j]
+                    j++
+                    if (j == key.length)
+                        j = 0
+                    if (ct[i] > 26)
+                        ct[i] = ct[i] % 26
+                }
+                var cipher = ""
+                for (i in 0 until plaintext.length) {
+                    cipher += m1.Cpos(ct[i])
+                }
+
+                return cipher
+            }
+
+            fun Decryption(ciphertext: String, key: String): String {
+                var plaintext = ""
+                val m1 = otpp()
+                val pt = IntArray(ciphertext.length)
+                val k = IntArray(key.length)
+                val ct = IntArray(ciphertext.length)
+
+                for (i in 0 until ciphertext.length) {
+                    ct[i] = m1.Ipos(ciphertext[i])
+                }
+                for (i in 0 until key.length) {
+                    k[i] = m1.Ipos(key[i])
+                }
+                var j = 0
+                for (i in 0 until ciphertext.length) {
+                    pt[i] = ct[i] - k[j]
+                    j++
+                    if (j == key.length)
+                        j = 0
+                    if (pt[i] < 0)
+                        pt[i] += 26
+                }
+                val cipher = ""
+                for (i in 0 until ciphertext.length) {
+                    plaintext += m1.Cpos(pt[i])
+                }
+                return plaintext
+            }
+        }
+
 
     companion object {
         fun newInstance(): MainFragment {
