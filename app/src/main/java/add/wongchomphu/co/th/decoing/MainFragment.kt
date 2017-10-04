@@ -57,6 +57,7 @@ class MainFragment : Fragment() {
         cbOTP.setOnClickListener {
             cbSiftCaesar.isChecked = false
             cbRailFenceCipher.isChecked = false
+            OneTimePad()
 
         }
     }
@@ -105,6 +106,15 @@ class MainFragment : Fragment() {
                 tvShowEncrypt.text = edtEncode.text.toString()
                 tvShowOutput.text = encoded
             }
+        }
+    }
+
+    private fun OneTimePad() {
+        btnEncode.setOnClickListener {
+            val key = edtValueK.text.toString()
+            val encoded = Onetimepadencryptcipher().Encryption(edtEncode.text.toString(),key)
+            tvShowEncrypt.text = edtEncode.text.toString()
+            tvShowOutput.text = encoded
         }
     }
 
