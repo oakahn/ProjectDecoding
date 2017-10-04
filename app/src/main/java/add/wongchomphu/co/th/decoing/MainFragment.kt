@@ -11,6 +11,7 @@ import android.widget.*
 import butterknife.BindView
 import butterknife.ButterKnife
 import android.widget.CheckBox
+import org.w3c.dom.Text
 import javax.crypto.Cipher
 import javax.crypto.spec.IvParameterSpec
 import javax.crypto.spec.SecretKeySpec
@@ -20,6 +21,7 @@ class MainFragment : Fragment() {
 
     @BindView(R.id.tv_show_input) lateinit var tvShowEncrypt: TextView
     @BindView(R.id.tv_show_output) lateinit var tvShowOutput: TextView
+    @BindView(R.id.tv_show_k) lateinit var tvShowK : TextView
     @BindView(R.id.edt_encode) lateinit var edtEncode: EditText
     @BindView(R.id.edt_input_k) lateinit var edtValueK: EditText
     @BindView(R.id.btn_encrypt) lateinit var btnEncode: Button
@@ -70,6 +72,7 @@ class MainFragment : Fragment() {
                 val encoded = ShiftCaesarEncryptElse(edtEncode.text.toString(), key.toInt())
                 tvShowEncrypt.text = edtEncode.text.toString()
                 tvShowOutput.text = ShiftCaesarDecrypt(encoded, key.toInt())
+                tvShowK.text = key
 
             }
         }
@@ -81,6 +84,7 @@ class MainFragment : Fragment() {
                 val encoded = ShiftCaesarEncrypt(edtEncode.text.toString(), key.toInt())
                 tvShowEncrypt.text = edtEncode.text.toString()
                 tvShowOutput.text = encoded
+                tvShowK.text = key
             }
         }
     }
@@ -95,6 +99,7 @@ class MainFragment : Fragment() {
                 val encoded = railFenceCipherEncrypt(edtEncode.text.toString(), key.toInt())
                 tvShowEncrypt.text = edtEncode.text.toString()
                 tvShowOutput.text = encoded
+                tvShowK.text = key
             }
         }
         btnDecode.setOnClickListener {
@@ -105,6 +110,7 @@ class MainFragment : Fragment() {
                 val encoded = railFenceCipherDecrypt(edtEncode.text.toString(), key.toInt())
                 tvShowEncrypt.text = edtEncode.text.toString()
                 tvShowOutput.text = encoded
+                tvShowK.text = key
             }
         }
     }
@@ -119,6 +125,7 @@ class MainFragment : Fragment() {
                 val encoded = Onetimepadencryptcipher().Encryption(edtEncode.text.toString(), key)
                 tvShowEncrypt.text = edtEncode.text.toString()
                 tvShowOutput.text = encoded
+                tvShowK.text = key
             }
         }
         btnDecode.setOnClickListener {
@@ -126,10 +133,10 @@ class MainFragment : Fragment() {
                 Freevalue()
             } else {
                 val key = edtValueK.text.toString()
-                val encoded = Onetimepadencryptcipher().Encryption(edtEncode.text.toString(), key)
+                val encoded = Onetimepadencryptcipher().Decryption(edtEncode.text.toString(), key)
                 val decoded = Onetimepadencryptcipher().Decryption(encoded, key)
-                tvShowEncrypt.text = edtEncode.text.toString()
-                tvShowOutput.text = decoded
+                tvShowOutput.text = encoded
+                tvShowK.text = key
             }
         }
     }
