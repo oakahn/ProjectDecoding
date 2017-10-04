@@ -1,6 +1,7 @@
 package add.wongchomphu.co.th.decoing
 
 
+import android.R.attr.*
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -13,9 +14,6 @@ import android.widget.CheckBox
 import javax.crypto.Cipher
 import javax.crypto.spec.IvParameterSpec
 import javax.crypto.spec.SecretKeySpec
-import android.R.attr.key
-
-
 
 
 class MainFragment : Fragment() {
@@ -63,6 +61,7 @@ class MainFragment : Fragment() {
     }
 
     private fun ShiftCaesar() {
+        edtValueK.inputType = numberPickerStyle
         btnEncode.setOnClickListener {
             if (edtEncode.length() == 0 || edtValueK.length() == 0) {
                 Freevalue()
@@ -87,6 +86,7 @@ class MainFragment : Fragment() {
     }
 
     private fun RailFenceCipher() {
+        edtValueK.inputType = numberPickerStyle
         btnEncode.setOnClickListener {
             if (edtEncode.length() == 0 || edtValueK.length() == 0) {
                 Freevalue()
@@ -110,6 +110,7 @@ class MainFragment : Fragment() {
     }
 
     private fun OneTimePad() {
+        edtValueK.inputType = text
         btnEncode.setOnClickListener {
             val key = edtValueK.text.toString()
             val encoded = Onetimepadencryptcipher().Encryption(edtEncode.text.toString(),key)
