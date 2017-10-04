@@ -56,6 +56,30 @@
                 android:textSize="14sp"/>
 
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="14dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            android:weightSum="3">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"
+                android:text="K : "
+                android:gravity="right"/>
+            <TextView
+                android:id="@+id/tv_show_k"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="Value"
+                android:textSize="14sp"/>
+
+        </LinearLayout>
+
         <EditText
             android:id="@+id/edt_encode"
             android:layout_width="match_parent"
