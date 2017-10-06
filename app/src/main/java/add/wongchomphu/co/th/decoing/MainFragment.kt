@@ -123,7 +123,7 @@ class MainFragment : Fragment() {
             } else {
                 val key = edtValueK.text.toString()
                 val encoded = Onetimepadencryptcipher().Encryption(edtEncode.text.toString(), key)
-                tvShowEncrypt.text = edtEncode.text.toString()
+                tvShowEncrypt.text = edtEncode.text
                 tvShowOutput.text = encoded
                 tvShowK.text = key
             }
@@ -134,7 +134,7 @@ class MainFragment : Fragment() {
             } else {
                 val key = edtValueK.text.toString()
                 val encoded = Onetimepadencryptcipher().Decryption(edtEncode.text.toString(), key)
-                val decoded = Onetimepadencryptcipher().Decryption(encoded, key)
+                tvShowEncrypt.text = edtEncode.text
                 tvShowOutput.text = encoded
                 tvShowK.text = key
             }
