@@ -45,21 +45,33 @@ class MainFragment : Fragment() {
 
     private fun selectCheckbox() {
         cbSiftCaesar.setOnClickListener {
-            cbRailFenceCipher.isChecked = false
-            cbOTP.isChecked = false
+            checkBoxShiftTrue()
             ShiftCaesar()
         }
         cbRailFenceCipher.setOnClickListener {
-            cbSiftCaesar.isChecked = false
-            cbOTP.isChecked = false
+            checkBoxRailFenceTrue()
             RailFenceCipher()
         }
         cbOTP.setOnClickListener {
-            cbSiftCaesar.isChecked = false
-            cbRailFenceCipher.isChecked = false
+            checkBoxOTPTrue()
             OneTimePad()
 
         }
+    }
+
+    private fun checkBoxShiftTrue() {
+        cbRailFenceCipher.isChecked = false
+        cbOTP.isChecked = false
+    }
+
+    private fun checkBoxRailFenceTrue() {
+        cbSiftCaesar.isChecked = false
+        cbOTP.isChecked = false
+    }
+
+    private fun checkBoxOTPTrue() {
+        cbSiftCaesar.isChecked = false
+        cbRailFenceCipher.isChecked = false
     }
 
     private fun ShiftCaesar() {
