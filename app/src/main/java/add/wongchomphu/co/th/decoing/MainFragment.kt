@@ -11,10 +11,6 @@ import android.widget.*
 import butterknife.BindView
 import butterknife.ButterKnife
 import android.widget.CheckBox
-import org.w3c.dom.Text
-import javax.crypto.Cipher
-import javax.crypto.spec.IvParameterSpec
-import javax.crypto.spec.SecretKeySpec
 
 
 class MainFragment : Fragment(){
@@ -39,22 +35,22 @@ class MainFragment : Fragment(){
     }
 
     private val indexOfChar = 26
-    private fun Freevalue() {
+    private fun freeValue() {
         Toast.makeText(context, getString(R.string.Error_Message), Toast.LENGTH_LONG).show()
     }
 
     private fun selectCheckbox() {
         cbSiftCaesar.setOnClickListener {
             checkBoxShiftTrue()
-            ShiftCaesar()
+            shiftCaesar()
         }
         cbRailFenceCipher.setOnClickListener {
             checkBoxRailFenceTrue()
-            RailFenceCipher()
+            railFenceCipher()
         }
         cbOTP.setOnClickListener {
             checkBoxOTPTrue()
-            OneTimePad()
+            oneTimePad()
         }
     }
 
@@ -73,36 +69,36 @@ class MainFragment : Fragment(){
         cbRailFenceCipher.isChecked = false
     }
 
-    private fun ShiftCaesar() {
+    private fun shiftCaesar() {
         edtValueK.inputType = numberPickerStyle
         btnEncode.setOnClickListener {
             if (edtEncode.length() == 0 || edtValueK.length() == 0) {
-                Freevalue()
+                freeValue()
             } else {
                 val key = edtValueK.text.toString()
-                val encodedElse = ShiftCaesarEncryptElse(edtEncode.text.toString(), key.toInt())
-                val encoded = ShiftCaesarDecrypt(encodedElse, key.toInt())
+                val encodedElse = shiftCaesarEncryptElse(edtEncode.text.toString(), key.toInt())
+                val encoded = shiftCaesarDecrypt(encodedElse, key.toInt())
                 textViewShow(encoded, key)
 
             }
         }
         btnDecode.setOnClickListener {
             if (edtEncode.length() == 0 || edtValueK.length() == 0) {
-                Freevalue()
+                freeValue()
             } else {
                 val key = edtValueK.text.toString()
-                val encoded = ShiftCaesarEncrypt(edtEncode.text.toString(), key.toInt())
+                val encoded = shiftCaesarEncrypt(edtEncode.text.toString(), key.toInt())
                 textViewShow(encoded, key)
             }
         }
     }
 
 
-    private fun RailFenceCipher() {
+    private fun railFenceCipher() {
         edtValueK.inputType = numberPickerStyle
         btnEncode.setOnClickListener {
             if (edtEncode.length() == 0 || edtValueK.length() == 0) {
-                Freevalue()
+                freeValue()
             } else {
                 val key = edtValueK.text.toString()
                 val encoded = railFenceCipherEncrypt(edtEncode.text.toString(), key.toInt())
@@ -111,7 +107,7 @@ class MainFragment : Fragment(){
         }
         btnDecode.setOnClickListener {
             if (edtEncode.length() == 0 || edtValueK.length() == 0) {
-                Freevalue()
+                freeValue()
             } else {
                 val key = edtValueK.text.toString()
                 val encoded = railFenceCipherDecrypt(edtEncode.text.toString(), key.toInt())
@@ -120,11 +116,11 @@ class MainFragment : Fragment(){
         }
     }
 
-    private fun OneTimePad() {
+    private fun oneTimePad() {
         edtValueK.inputType = text
         btnEncode.setOnClickListener {
             if (edtEncode.length() == 0 || edtValueK.length() == 0) {
-                Freevalue()
+                freeValue()
             } else {
                 val key = edtValueK.text.toString()
                 val encoded = Onetimepadencryptcipher().Encryption(edtEncode.text.toString(), key)
@@ -133,7 +129,7 @@ class MainFragment : Fragment(){
         }
         btnDecode.setOnClickListener {
             if (edtEncode.length() == 0 || edtValueK.length() == 0) {
-                Freevalue()
+                freeValue()
             } else {
                 val key = edtValueK.text.toString()
                 val encoded = Onetimepadencryptcipher().Decryption(edtEncode.text.toString(), key)
@@ -148,7 +144,7 @@ class MainFragment : Fragment(){
         tvShowK.text = key
     }
 
-    private fun ShiftCaesarEncrypt(input: String, key: Int): String {
+    private fun shiftCaesarEncrypt(input: String, key: Int): String {
         val offset = key % indexOfChar
         if (offset == 0) return input
         var output: Char
@@ -167,7 +163,7 @@ class MainFragment : Fragment(){
         return chars.joinToString("")
     }
 
-    private fun ShiftCaesarEncryptElse(input: String, key: Int): String {
+    private fun shiftCaesarEncryptElse(input: String, key: Int): String {
         val offset = (key % indexOfChar) - key
         if (offset == 0) return input
         var output: Char
@@ -186,7 +182,7 @@ class MainFragment : Fragment(){
         return chars.joinToString("")
     }
 
-    private fun ShiftCaesarDecrypt(input: String, key: Int): String = ShiftCaesarEncrypt(input, indexOfChar - key)
+    private fun shiftCaesarDecrypt(input: String, key: Int): String = shiftCaesarEncrypt(input, indexOfChar - key)
     private fun railFenceCipherEncrypt(text: String, key: Int): String {
         if (key < 2 || key >= text.length) return text
         val sb = StringBuilder()

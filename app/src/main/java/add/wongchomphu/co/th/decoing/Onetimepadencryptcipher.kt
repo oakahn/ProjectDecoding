@@ -60,3 +60,34 @@ open class Onetimepadencryptcipher {
         return plaintext
     }
 }
+class otpp {
+    var a = 97
+    var all = CharArray(27)
+
+    init {
+        for (i in 0..25) {
+            all[i] = a.toChar()
+            a++
+        }
+    }
+
+    fun Ipos(c: Char): Int {
+        var i = 0
+        while (i < 26) {
+            if (all[i] == c) {
+                break
+            }
+            i++
+        }
+        return i
+    }
+
+    fun Cpos(c: Int): Char {
+        var i = 0
+        while (i < c) {
+            i++
+
+        }
+        return all[i]
+    }
+}
