@@ -88,7 +88,8 @@
             android:layout_marginRight="14dp"
             android:hint="Input code"
             android:padding="14dp"
-            android:inputType="text"/>
+            android:inputType="text"
+            android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ" />
         <EditText
             android:id="@+id/edt_input_k"
             android:layout_width="match_parent"
@@ -97,7 +98,8 @@
             android:layout_marginRight="14dp"
             android:hint="Input vulue K"
             android:padding="14dp"
-            android:inputType="number"/>
+            android:inputType="number"
+            android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789" />
         <Button
             android:id="@+id/btn_encrypt"
             android:layout_width="match_parent"

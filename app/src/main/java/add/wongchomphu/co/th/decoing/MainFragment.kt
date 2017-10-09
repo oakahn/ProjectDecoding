@@ -39,7 +39,7 @@ class MainFragment : Fragment(){
         Toast.makeText(context, getString(R.string.Error_Message), Toast.LENGTH_LONG).show()
     }
     private fun isNotEnglish() {
-        Toast.makeText(context, getString(R.string.isNotEnglish), Toast.LENGTH_LONG).show()
+        Toast.makeText(context, getString(R.string.Error_Message), Toast.LENGTH_LONG).show()
     }
 
     private fun selectCheckbox() {
@@ -72,7 +72,7 @@ class MainFragment : Fragment(){
         cbRailFenceCipher.isChecked = false
     }
 
-    val validLetters = ('a'..'z') + ('A'..'Z')
+
     private fun shiftCaesar() {
         edtValueK.inputType = numberPickerStyle
         btnEncode.setOnClickListener {
