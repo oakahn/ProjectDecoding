@@ -38,21 +38,24 @@ class MainFragment : Fragment(){
     private fun freeValue() {
         Toast.makeText(context, getString(R.string.Error_Message), Toast.LENGTH_LONG).show()
     }
-    private fun isNotEnglish() {
-        Toast.makeText(context, getString(R.string.Error_Message), Toast.LENGTH_LONG).show()
-    }
 
     private fun selectCheckbox() {
         cbSiftCaesar.setOnClickListener {
             checkBoxShiftTrue()
+            edtEncode.setText("")
+            edtValueK.setText("")
             shiftCaesar()
         }
         cbRailFenceCipher.setOnClickListener {
             checkBoxRailFenceTrue()
+            edtEncode.setText("")
+            edtValueK.setText("")
             railFenceCipher()
         }
         cbOTP.setOnClickListener {
             checkBoxOTPTrue()
+            edtEncode.setText("")
+            edtValueK.setText("")
             oneTimePad()
         }
     }
