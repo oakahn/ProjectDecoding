@@ -99,7 +99,8 @@
             android:hint="Input vulue K"
             android:padding="14dp"
             android:inputType="number"
-            android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789" />
+            android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789"
+            android:maxLength="2"/>
         <Button
             android:id="@+id/btn_encrypt"
             android:layout_width="match_parent"

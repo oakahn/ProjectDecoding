@@ -11,6 +11,12 @@ import android.widget.*
 import butterknife.BindView
 import butterknife.ButterKnife
 import android.widget.CheckBox
+import android.text.InputFilter
+import android.widget.EditText
+
+
+
+
 
 
 class MainFragment : Fragment(){
@@ -122,8 +128,15 @@ class MainFragment : Fragment(){
         }
     }
 
+   private fun setEditTextMaxLength(editText: EditText, length: Int) {
+        val FilterArray = arrayOfNulls<InputFilter>(1)
+        FilterArray[0] = InputFilter.LengthFilter(length)
+        editText.filters = FilterArray
+    }
     private fun oneTimePad() {
         edtValueK.inputType = text
+        setEditTextMaxLength(edtValueK,10)
+        setEditTextMaxLength(edtEncode,10)
         btnEncode.setOnClickListener {
             if (edtEncode.length() == 0 || edtValueK.length() == 0) {
                 freeValue()
