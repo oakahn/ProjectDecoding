@@ -88,21 +88,29 @@ class MainFragment : Fragment(){
             if (edtEncode.length() == 0 || edtValueK.length() == 0) {
                 freeValue()
             } else {
-                val key = edtValueK.text.toString()
-                val encodedElse = shiftCaesarEncryptElse(edtEncode.text.toString(), key.toInt())
-                val encoded = shiftCaesarDecrypt(encodedElse, key.toInt())
-                textViewShow(encoded, key)
+                encryptShiftCaeSar()
             }
         }
         btnDecode.setOnClickListener {
             if (edtEncode.length() == 0 || edtValueK.length() == 0) {
                 freeValue()
             } else {
-                val key = edtValueK.text.toString()
-                val encoded = shiftCaesarEncrypt(edtEncode.text.toString(), key.toInt())
-                textViewShow(encoded, key)
+                decryptShiftCaeSar()
             }
         }
+    }
+
+    private fun decryptShiftCaeSar() {
+        val key = edtValueK.text.toString()
+        val encoded = shiftCaesarEncrypt(edtEncode.text.toString(), key.toInt())
+        textViewShow(encoded, key)
+    }
+
+    private fun encryptShiftCaeSar() {
+        val key = edtValueK.text.toString()
+        val encodedElse = shiftCaesarEncryptElse(edtEncode.text.toString(), key.toInt())
+        val encoded = shiftCaesarDecrypt(encodedElse, key.toInt())
+        textViewShow(encoded, key)
     }
 
 
@@ -112,23 +120,31 @@ class MainFragment : Fragment(){
             if (edtEncode.length() == 0 || edtValueK.length() == 0) {
                 freeValue()
             } else {
-                val key = edtValueK.text.toString()
-                val encoded = railFenceCipherEncrypt(edtEncode.text.toString(), key.toInt())
-                textViewShow(encoded, key)
+                encryptRailFenceCipher()
             }
         }
         btnDecode.setOnClickListener {
             if (edtEncode.length() == 0 || edtValueK.length() == 0) {
                 freeValue()
             } else {
-                val key = edtValueK.text.toString()
-                val encoded = railFenceCipherDecrypt(edtEncode.text.toString(), key.toInt())
-                textViewShow(encoded, key)
+                decryptRailFenceCipher()
             }
         }
     }
 
-   private fun setEditTextMaxLength(editText: EditText, length: Int) {
+    private fun decryptRailFenceCipher() {
+        val key = edtValueK.text.toString()
+        val encoded = railFenceCipherDecrypt(edtEncode.text.toString(), key.toInt())
+        textViewShow(encoded, key)
+    }
+
+    private fun encryptRailFenceCipher() {
+        val key = edtValueK.text.toString()
+        val encoded = railFenceCipherEncrypt(edtEncode.text.toString(), key.toInt())
+        textViewShow(encoded, key)
+    }
+
+    private fun setEditTextMaxLength(editText: EditText, length: Int) {
         val FilterArray = arrayOfNulls<InputFilter>(1)
         FilterArray[0] = InputFilter.LengthFilter(length)
         editText.filters = FilterArray
@@ -141,20 +157,28 @@ class MainFragment : Fragment(){
             if (edtEncode.length() == 0 || edtValueK.length() == 0) {
                 freeValue()
             } else {
-                val key = edtValueK.text.toString()
-                val encoded = Onetimepadencryptcipher().Encryption(edtEncode.text.toString(), key)
-                textViewShow(encoded, key)
+                encryptOTP()
             }
         }
         btnDecode.setOnClickListener {
             if (edtEncode.length() == 0 || edtValueK.length() == 0) {
                 freeValue()
             } else {
-                val key = edtValueK.text.toString()
-                val encoded = Onetimepadencryptcipher().Decryption(edtEncode.text.toString(), key)
-                textViewShow(encoded, key)
+                decryptOTP()
             }
         }
+    }
+
+    private fun decryptOTP() {
+        val key = edtValueK.text.toString()
+        val encoded = Onetimepadencryptcipher().Decryption(edtEncode.text.toString(), key)
+        textViewShow(encoded, key)
+    }
+
+    private fun encryptOTP() {
+        val key = edtValueK.text.toString()
+        val encoded = Onetimepadencryptcipher().Encryption(edtEncode.text.toString(), key)
+        textViewShow(encoded, key)
     }
 
     private fun textViewShow(encoded: String, key: String) {
