@@ -83,22 +83,24 @@ class MainFragment : Fragment(){
     private fun selectCheckbox() {
         cbSiftCaesar.setOnClickListener {
             checkBoxShiftTrue()
-            edtEncode.setText("")
-            edtValueK.setText("")
+            clearEdittext()
             shiftCaesar()
         }
         cbRailFenceCipher.setOnClickListener {
             checkBoxRailFenceTrue()
-            edtEncode.setText("")
-            edtValueK.setText("")
+            clearEdittext()
             railFenceCipher()
         }
         cbOTP.setOnClickListener {
             checkBoxOTPTrue()
-            edtEncode.setText("")
-            edtValueK.setText("")
+            clearEdittext()
             oneTimePad()
         }
+    }
+
+    private fun clearEdittext() {
+        edtEncode.setText("")
+        edtValueK.setText("")
     }
 
     private fun checkBoxShiftTrue() {
