@@ -14,11 +14,6 @@ import android.widget.CheckBox
 import android.text.InputFilter
 import android.widget.EditText
 
-
-
-
-
-
 class MainFragment : Fragment(){
 
     @BindView(R.id.tv_show_input) lateinit var tvShowEncrypt: TextView
@@ -80,25 +75,30 @@ class MainFragment : Fragment(){
         val encoded = Onetimepadencryptcipher().Encryption(edtEncode.text.toString(), key)
         textViewShow(encoded, key)
     }
+    private fun textViewShow(encoded: String, key: String) {
+        tvShowEncrypt.text = edtEncode.text.toString()
+        tvShowOutput.text = encoded
+        tvShowK.text = key
+    }
     private fun selectCheckbox() {
         cbSiftCaesar.setOnClickListener {
             checkBoxShiftTrue()
-            clearEdittext()
+            clearEditText()
             shiftCaesar()
         }
         cbRailFenceCipher.setOnClickListener {
             checkBoxRailFenceTrue()
-            clearEdittext()
+            clearEditText()
             railFenceCipher()
         }
         cbOTP.setOnClickListener {
             checkBoxOTPTrue()
-            clearEdittext()
+            clearEditText()
             oneTimePad()
         }
     }
 
-    private fun clearEdittext() {
+    private fun clearEditText() {
         edtEncode.setText("")
         edtValueK.setText("")
     }
@@ -180,12 +180,6 @@ class MainFragment : Fragment(){
         }
     }
 
-
-    private fun textViewShow(encoded: String, key: String) {
-        tvShowEncrypt.text = edtEncode.text.toString()
-        tvShowOutput.text = encoded
-        tvShowK.text = key
-    }
 
     private fun shiftCaesarEncrypt(input: String, key: Int): String {
         val offset = key % indexOfChar
