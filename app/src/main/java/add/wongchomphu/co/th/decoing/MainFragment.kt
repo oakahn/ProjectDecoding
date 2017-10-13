@@ -42,7 +42,7 @@ class MainFragment : Fragment(){
 
     private fun decryptShiftCaeSar() {
         val key = edtValueK.text.toString()
-        val encoded =Algorithm().shiftCaesarEncrypt(edtEncode.text.toString(), key.toInt())
+        val encoded = ShiftCaeSar().shiftCaesarEncrypt(edtEncode.text.toString(), key.toInt())
         textViewShow(encoded, key)
     }
 
@@ -60,8 +60,8 @@ class MainFragment : Fragment(){
 
     private fun encryptShiftCaeSar() {
         val key = edtValueK.text.toString()
-        val encodedElse = shiftCaesarEncryptElse(edtEncode.text.toString(), key.toInt())
-        val encoded = shiftCaesarDecrypt(encodedElse, key.toInt())
+        val encodedElse = ShiftCaeSar().shiftCaesarEncryptElse(edtEncode.text.toString(), key.toInt())
+        val encoded = ShiftCaeSar().shiftCaesarDecrypt(encodedElse, key.toInt())
         textViewShow(encoded, key)
     }
 
@@ -182,28 +182,6 @@ class MainFragment : Fragment(){
     }
 
 
-
-
-    private fun shiftCaesarEncryptElse(input: String, key: Int): String {
-        val offset = (key % indexOfChar) - key
-        if (offset == 0) return input
-        var output: Char
-        val chars = CharArray(input.length)
-        for ((index, position) in input.withIndex()) {
-            if (position in 'A'..'Z') {
-                output = position + offset
-                if (output > 'Z') output += indexOfChar
-            } else if (position in 'a'..'z') {
-                output = position + offset
-                if (output > 'z') output += indexOfChar
-            } else
-                output = position
-            chars[index] = output
-        }
-        return chars.joinToString("")
-    }
-
-    private fun shiftCaesarDecrypt(input: String, key: Int): String = Algorithm().shiftCaesarEncrypt(input, indexOfChar - key)
     private fun railFenceCipherEncrypt(text: String, key: Int): String {
         if (key < 2 || key >= text.length) return text
         val sb = StringBuilder()
