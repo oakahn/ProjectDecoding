@@ -48,7 +48,7 @@ class MainFragment : Fragment(){
 
     private fun decryptOTP() {
         val key = edtValueK.text.toString()
-        val encoded = Onetimepadencryptcipher().Decryption(edtEncode.text.toString(), key)
+        val encoded = OneTimePassword().Decryption(edtEncode.text.toString(), key)
         textViewShow(encoded, key)
     }
 
@@ -72,7 +72,7 @@ class MainFragment : Fragment(){
     }
     private fun encryptOTP() {
         val key = edtValueK.text.toString()
-        val encoded = Onetimepadencryptcipher().Encryption(edtEncode.text.toString(), key)
+        val encoded = OneTimePassword().Encryption(edtEncode.text.toString(), key)
         textViewShow(encoded, key)
     }
 
@@ -180,7 +180,6 @@ class MainFragment : Fragment(){
             }
         }
     }
-
     class otpp {
         var a = 97
         var all = CharArray(27)
