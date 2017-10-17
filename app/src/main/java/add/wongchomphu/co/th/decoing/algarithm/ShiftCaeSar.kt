@@ -1,7 +1,7 @@
 package add.wongchomphu.co.th.decoing.algarithm
 
 open class ShiftCaeSar {
-    val indexOfChar = 26
+   private val indexOfChar = 26
     fun shiftCaesarEncrypt(input: String, key: Int): String {
         val offset = key % indexOfChar
         if (offset == 0) return input

@@ -2,7 +2,7 @@ package add.wongchomphu.co.th.decoing
 
 
 import add.wongchomphu.co.th.decoing.algarithm.OneTimePassword
-import add.wongchomphu.co.th.decoing.algarithm.RailFenceCihpher
+import add.wongchomphu.co.th.decoing.algarithm.RailFenceCipher
 import add.wongchomphu.co.th.decoing.algarithm.ShiftCaeSar
 import android.R.attr.*
 import android.os.Bundle
@@ -51,13 +51,13 @@ class MainFragment : Fragment(){
 
     private fun decryptOTP() {
         val key = edtValueK.text.toString()
-        val encoded = OneTimePassword().Decryption(edtEncode.text.toString(), key)
+        val encoded = OneTimePassword().decryption(edtEncode.text.toString(), key)
         textViewShow(encoded, key)
     }
 
     private fun decryptRailFenceCipher() {
         val key = edtValueK.text.toString()
-        val encoded = RailFenceCihpher().railFenceCipherDecrypt(edtEncode.text.toString(), key.toInt())
+        val encoded = RailFenceCipher().railFenceCipherDecrypt(edtEncode.text.toString(), key.toInt())
         textViewShow(encoded, key)
     }
 
@@ -70,12 +70,12 @@ class MainFragment : Fragment(){
 
     private fun encryptRailFenceCipher() {
         val key = edtValueK.text.toString()
-        val encoded = RailFenceCihpher().railFenceCipherEncrypt(edtEncode.text.toString(), key.toInt())
+        val encoded = RailFenceCipher().railFenceCipherEncrypt(edtEncode.text.toString(), key.toInt())
         textViewShow(encoded, key)
     }
     private fun encryptOTP() {
         val key = edtValueK.text.toString()
-        val encoded = OneTimePassword().Encryption(edtEncode.text.toString(), key)
+        val encoded = OneTimePassword().encryption(edtEncode.text.toString(), key)
         textViewShow(encoded, key)
     }
 

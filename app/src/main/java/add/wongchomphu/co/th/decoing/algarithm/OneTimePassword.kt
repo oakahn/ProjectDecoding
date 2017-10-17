@@ -3,7 +3,7 @@ package add.wongchomphu.co.th.decoing.algarithm
 import add.wongchomphu.co.th.decoing.MainFragment
 
 open class OneTimePassword {
-    fun Encryption(plaintext: String, key: String): String {
+    fun encryption(plaintext: String, key: String): String {
         var plaintext = plaintext
         plaintext = plaintext.toLowerCase()
         val m1 = MainFragment.otpp()
@@ -34,7 +34,7 @@ open class OneTimePassword {
         return cipher
     }
 
-    fun Decryption(ciphertext: String, key: String): String {
+    fun decryption(ciphertext: String, key: String): String {
         var plaintext = ""
         val m1 = MainFragment.otpp()
         val pt = IntArray(ciphertext.length)

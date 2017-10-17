@@ -1,6 +1,6 @@
 package add.wongchomphu.co.th.decoing.algarithm
 
-open class RailFenceCihpher {
+open class RailFenceCipher {
 
      fun railFenceCipherEncrypt(text: String, key: Int): String {
         if (key < 2 || key >= text.length) return text
