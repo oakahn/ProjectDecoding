@@ -1,4 +1,6 @@
-package add.wongchomphu.co.th.decoing
+package add.wongchomphu.co.th.decoing.algarithm
+
+import add.wongchomphu.co.th.decoing.MainFragment
 
 open class OneTimePassword {
     fun Encryption(plaintext: String, key: String): String {

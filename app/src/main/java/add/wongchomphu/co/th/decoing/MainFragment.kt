@@ -1,6 +1,9 @@
 package add.wongchomphu.co.th.decoing
 
 
+import add.wongchomphu.co.th.decoing.algarithm.OneTimePassword
+import add.wongchomphu.co.th.decoing.algarithm.RailFenceCihpher
+import add.wongchomphu.co.th.decoing.algarithm.ShiftCaeSar
 import android.R.attr.*
 import android.os.Bundle
 import android.support.v4.app.Fragment

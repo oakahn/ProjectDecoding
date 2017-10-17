@@ -1,4 +1,4 @@
-package add.wongchomphu.co.th.decoing
+package add.wongchomphu.co.th.decoing.algarithm
 
 open class RailFenceCihpher {
 
