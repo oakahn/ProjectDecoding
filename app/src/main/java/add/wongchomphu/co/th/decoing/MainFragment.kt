@@ -35,6 +35,8 @@ class MainFragment : Fragment(){
         val view = inflater!!.inflate(R.layout.fragment_mian, container, false)
         ButterKnife.bind(this, view)
         selectCheckbox()
+        edtEncode.hint = "today is my birthday"
+        edtValueK.hint = "today is my birthday"
         return view
     }
 
