@@ -16,6 +16,7 @@ import butterknife.ButterKnife
 import android.widget.CheckBox
 import android.text.InputFilter
 import android.widget.EditText
+import com.bumptech.glide.Glide
 
 class MainFragment : Fragment(){
 
