@@ -38,7 +38,7 @@ class MainFragment : Fragment(){
                               savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_mian, container, false)
         ButterKnife.bind(this, view)
-        Glide.with(this).load(R.drawable.shoot).crossFade().into(ivBackground)
+        Glide.with(this).load(R.drawable.bycicle).crossFade().into(ivBackground)
         selectCheckbox()
         return view
     }
