@@ -4,6 +4,8 @@ package add.wongchomphu.co.th.decoing
 import add.wongchomphu.co.th.decoing.algarithm.OneTimePassword
 import add.wongchomphu.co.th.decoing.algarithm.RailFenceCipher
 import add.wongchomphu.co.th.decoing.algarithm.ShiftCaeSar
+import add.wongchomphu.co.th.decoing.R
+import add.wongchomphu.co.th.decoing.R.*
 import android.R.attr.*
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -30,11 +32,13 @@ class MainFragment : Fragment(){
     @BindView(R.id.cb_ShiftCaesar) lateinit var cbSiftCaesar: CheckBox
     @BindView(R.id.cb_rail_fence_cipher) lateinit var cbRailFenceCipher: CheckBox
     @BindView(R.id.cb_OTP) lateinit var cbOTP: CheckBox
+    @BindView(R.id.bg) lateinit var ivBackground : ImageView
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_mian, container, false)
         ButterKnife.bind(this, view)
+        Glide.with(this).load(R.drawable.shoot).crossFade().into(ivBackground)
         selectCheckbox()
         return view
     }
