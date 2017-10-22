@@ -4,8 +4,6 @@ package add.wongchomphu.co.th.decoing
 import add.wongchomphu.co.th.decoing.algarithm.OneTimePassword
 import add.wongchomphu.co.th.decoing.algarithm.RailFenceCipher
 import add.wongchomphu.co.th.decoing.algarithm.ShiftCaeSar
-import add.wongchomphu.co.th.decoing.R
-import add.wongchomphu.co.th.decoing.R.*
 import android.R.attr.*
 import android.os.Bundle
 import android.support.v4.app.Fragment
