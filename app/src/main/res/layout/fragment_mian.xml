@@ -73,7 +73,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="8dp"
             android:layout_marginLeft="14dp"
             android:layout_marginRight="14dp"
             android:weightSum="3">
@@ -141,21 +141,21 @@
                 android:layout_height="wrap_content"
                 android:text="shiftCaesar"
                 android:layout_weight="1"
-                android:textColor="#FF5252"/>
+                android:textColor="#F44336"/>
             <android.support.v7.widget.AppCompatCheckBox
                 android:id="@+id/cb_rail_fence_cipher"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="rail fence cipher"
                 android:layout_weight="1"
-                android:textColor="#FF5252"/>
+                android:textColor="#FFEB3B"/>
             <android.support.v7.widget.AppCompatCheckBox
                 android:id="@+id/cb_OTP"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="OTP"
                 android:layout_weight="1"
-                android:textColor="#FF5252" />
+                android:textColor="#CDDC39" />
         </LinearLayout>
 
     </LinearLayout>
