@@ -141,21 +141,21 @@
                 android:layout_height="wrap_content"
                 android:text="shiftCaesar"
                 android:layout_weight="1"
-                android:textColor="#F44336"/>
+                android:textColor="@color/colorRed"/>
             <android.support.v7.widget.AppCompatCheckBox
                 android:id="@+id/cb_rail_fence_cipher"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="rail fence cipher"
                 android:layout_weight="1"
-                android:textColor="#FFEB3B"/>
+                android:textColor="@color/colorYellow"/>
             <android.support.v7.widget.AppCompatCheckBox
                 android:id="@+id/cb_OTP"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="OTP"
                 android:layout_weight="1"
-                android:textColor="#CDDC39" />
+                android:textColor="@color/colorLime" />
         </LinearLayout>
 
     </LinearLayout>
