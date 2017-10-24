@@ -185,7 +185,7 @@ class MainFragment : Fragment(){
             }
         }
     }
-    class otpp {
+    class oTP {
         var a = 97
         var all = CharArray(27)
 
@@ -196,7 +196,7 @@ class MainFragment : Fragment(){
             }
         }
 
-        fun Ipos(c: Char): Int {
+        fun iPOS(c: Char): Int {
             var i = 0
             while (i < 26) {
                 if (all[i] == c) {

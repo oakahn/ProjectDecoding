@@ -6,16 +6,16 @@ open class OneTimePassword {
     fun encryption(plaintext: String, key: String): String {
         var plaintext = plaintext
         plaintext = plaintext.toLowerCase()
-        val m1 = MainFragment.otpp()
+        val m1 = MainFragment.oTP()
         val pt = IntArray(plaintext.length)
         val k = IntArray(key.length)
         val ct = IntArray(plaintext.length)
 
         for (i in 0 until plaintext.length) {
-            pt[i] = m1.Ipos(plaintext[i])
+            pt[i] = m1.iPOS(plaintext[i])
         }
         for (i in 0 until key.length) {
-            k[i] = m1.Ipos(key[i])
+            k[i] = m1.iPOS(key[i])
         }
         var j = 0
         for (i in 0 until plaintext.length) {
@@ -36,16 +36,16 @@ open class OneTimePassword {
 
     fun decryption(ciphertext: String, key: String): String {
         var plaintext = ""
-        val m1 = MainFragment.otpp()
+        val m1 = MainFragment.oTP()
         val pt = IntArray(ciphertext.length)
         val k = IntArray(key.length)
         val ct = IntArray(ciphertext.length)
 
         for (i in 0 until ciphertext.length) {
-            ct[i] = m1.Ipos(ciphertext[i])
+            ct[i] = m1.iPOS(ciphertext[i])
         }
         for (i in 0 until key.length) {
-            k[i] = m1.Ipos(key[i])
+            k[i] = m1.iPOS(key[i])
         }
         var j = 0
         for (i in 0 until ciphertext.length) {
