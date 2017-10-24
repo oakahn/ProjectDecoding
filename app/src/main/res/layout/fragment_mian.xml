@@ -134,7 +134,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            android:layout_marginTop="14dp">
             <android.support.v7.widget.AppCompatCheckBox
                 android:id="@+id/cb_ShiftCaesar"
                 android:layout_width="wrap_content"
