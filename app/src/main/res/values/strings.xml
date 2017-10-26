@@ -10,7 +10,7 @@
     <string name="ValueK">Input Value K</string>
     <string name="Code">Input code</string>
     <string name="OTP">OTP</string>
-    <string name="railfencecipher">rail fence cipher</string>
+    <string name="Railfencecipher">rail fence cipher</string>
     <string name="shiftCaesar">shiftCaesar</string>
     <string name="Value">Value</string>
     <string name="OutputK">K : </string>

@@ -20,17 +20,17 @@ import com.bumptech.glide.Glide
 
 class MainFragment : Fragment(){
 
-    @BindView(R.id.tv_show_input) lateinit var tvShowEncrypt: TextView
-    @BindView(R.id.tv_show_output) lateinit var tvShowOutput: TextView
-    @BindView(R.id.tv_show_k) lateinit var tvShowK: TextView
-    @BindView(R.id.edt_encode) lateinit var edtEncode: EditText
-    @BindView(R.id.edt_input_k) lateinit var edtValueK: EditText
-    @BindView(R.id.btn_encrypt) lateinit var btnEncode: Button
-    @BindView(R.id.btn_decrypt) lateinit var btnDecode: Button
-    @BindView(R.id.cb_ShiftCaesar) lateinit var cbSiftCaesar: CheckBox
-    @BindView(R.id.cb_rail_fence_cipher) lateinit var cbRailFenceCipher: CheckBox
-    @BindView(R.id.cb_OTP) lateinit var cbOTP: CheckBox
-    @BindView(R.id.bg) lateinit var ivBackground : ImageView
+    @BindView(R.id.tv_show_input) private lateinit var tvShowEncrypt: TextView
+    @BindView(R.id.tv_show_output) private lateinit var tvShowOutput: TextView
+    @BindView(R.id.tv_show_k) private lateinit var tvShowK: TextView
+    @BindView(R.id.edt_encode) private lateinit var edtEncode: EditText
+    @BindView(R.id.edt_input_k) private lateinit var edtValueK: EditText
+    @BindView(R.id.btn_encrypt) private lateinit var btnEncode: Button
+    @BindView(R.id.btn_decrypt) private lateinit var btnDecode: Button
+    @BindView(R.id.cb_ShiftCaesar) private lateinit var cbSiftCaesar: CheckBox
+    @BindView(R.id.cb_rail_fence_cipher) private lateinit var cbRailFenceCipher: CheckBox
+    @BindView(R.id.cb_OTP) private lateinit var cbOTP: CheckBox
+    @BindView(R.id.bg) private lateinit var ivBackground : ImageView
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
